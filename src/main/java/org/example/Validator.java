@@ -1,24 +1,24 @@
 package org.example;
 
-
 public class Validator {
     private int[] data;
 
     Validator(int[] data) {
         this.data = data;
     }
-    private boolean checkError (){
-//길이가 짧은 경우
-        if (data.length!=4){
+
+    private boolean checkError() {
+        // if length is short
+        if (data.length != 4) {
             return false;
         }
 
-        for(int i=0;i<4;i++) {
-//입력 값이 0~9의 범위를 벗어나는 경우
+        for (int i = 0; i < 4; i++) {
+            // If the input value is outside the range of 0 to 9
             if (data[i] < 0 || data[i] > 9) {
                 return false;
             }
-// 중복 체크
+            // duplicate check
             for (int j = i + 1; j < 4; j++) {
                 if (data[i] == data[j]) {
                     return false;
@@ -27,9 +27,24 @@ public class Validator {
         }
         return true;
     }
+
+    private static final int INVALID_LENGTH = 1;
+    private static final int INVALID_VALUE = 2;
+    private static final int DUPLICATE_VALUE = 3;
+
     public void validate() throws InvalidDataException {
-        if (!checkError()) {
-            throw new InvalidDataException("Error: Invalid input. Please enter four unique numbers between 0 and 9.");
+        if (data.length != 4) {
+            throw new InvalidDataException("Error: Invalid input length. Please enter four numbers.");
+        }
+        for (int i = 0; i < 4; i++) {
+            if (data[i] < 0 || data[i] > 9) {
+                throw new InvalidDataException("Error: Invalid input value. Please enter numbers between 0 and 9.");
+            }
+            for (int j = i + 1; j < 4; j++) {
+                if (data[i] == data[j]) {
+                    throw new InvalidDataException("Error: Duplicate value. Please enter four unique numbers.");
+                }
+            }
         }
     }
 
