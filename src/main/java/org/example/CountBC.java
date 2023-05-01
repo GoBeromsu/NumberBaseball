@@ -3,9 +3,9 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 
-public class countBC {
+public class CountBC {
 
-    List<Integer> countBC(int[] inputNum, int[] randomNum){
+    List<Integer> countBullsAndCows(int[] inputNum, int[] randomNum){
         List<Integer> list = new ArrayList<>();
         int B=0; int C=0;
         for(int i=0;i<4;i++){
