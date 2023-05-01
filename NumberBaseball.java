@@ -15,7 +15,7 @@ public class CompNum {
         }
 //        for (String s : compNum) {
 //            System.out.print(s);
-//        }S
+//        }
 
     }
 
