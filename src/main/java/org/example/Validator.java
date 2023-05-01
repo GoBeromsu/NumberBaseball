@@ -27,9 +27,16 @@ public class Validator {
         }
         return true;
     }
+    public String getError() {
+        if (!checkError()) {
+            return "Error: Invalid input. Please enter four unique numbers between 0 and 9.";
+        }
+        return null;
+    }
     public static void main(String[] args) {
         int[] testData = {1, 2, 3, 4};
         Validator validator = new Validator(testData);
         System.out.println("checkError : "+validator.checkError());
+        System.out.println("getError : "+validator.getError());
     }
 }
